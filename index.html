@@ -8,11 +8,10 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Dra. Suany Carvalho: fisioterapia domiciliar em Osasco">
 <meta property="og:description" content="Fisioterapia no conforto da sua casa, em Osasco e na zona oeste de São Paulo. Oito anos de atendimento.">
-<meta property="og:image" content="share.jpg">
+<meta property="og:image" content="media/hero-poster.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#f3f1ec">
-<!-- <link rel="canonical" href="https://[dominio-da-cliente]/"> -->
 <meta name="site-kind" content="other">
 <meta name="page-type" content="service">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,10 +42,8 @@
 <link rel="modulepreload" href="assets/moments/pinned-chapters/moment.js">
 <link rel="modulepreload" href="assets/moments/picture-develops/moment.js">
 <style>
-  /* sem hifenização: nenhuma palavra quebra no meio */
   h1, h2, h3, h4 { hyphens: none; -webkit-hyphens: none; overflow-wrap: normal; }
 
-  /* hero em tela cheia: vídeo ao fundo, escurecido, texto claro por cima */
   .hero--video .hero__bg { position: absolute; inset: 0; z-index: -1; }
   .hero--video .hero__bg video { width: 100%; height: 100%; object-fit: cover; }
   .hero--video .hero__scrim { position: absolute; inset: 0; background: rgba(15, 22, 30, 0.55); }
@@ -60,7 +57,6 @@
   .hero--video .hero-text > * + * { margin-top: var(--s-5); }
   .hero--video .hero-text > .btn-row { margin-top: var(--s-6); }
 
-  /* navbar transparente no topo, branca ao rolar */
   .nav { transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease); }
   .nav--transparent { background: transparent; border-bottom-color: transparent; color: #f3f1ec; }
   .nav--transparent .nav__logo, .nav--transparent .nav__link { color: #f3f1ec; }
@@ -77,43 +73,80 @@
   .mo-pc__step h3 { text-wrap: balance; }
   .mo-pc__step p { text-wrap: pretty; }
 
+  @media (min-width: 1024px) {
+    .atend__head h2 .muted { display: block; margin-top: var(--s-4); }
+    .atend__head .section-head { margin-bottom: 0; }
+    .atend__photo { display: none; }
+  }
+  @media (max-width: 1023px) {
+    .atend__head .section-head { margin-bottom: var(--head-gap); }
+  }
+
   .rows .rows__name small { display: block; font-weight: 400; color: var(--muted); font-size: var(--t-small); }
 
-  /* foto da profissional: mostra o topo, sem cortar a cabeça */
   .develop { margin: 0; border-radius: var(--r-lg); overflow: hidden; height: min(560px, var(--ly-fit)); }
   .develop > img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 0%; }
   @media (max-width: 1023px) { .develop { height: auto; aspect-ratio: 4 / 3; margin-top: var(--s-7); } }
 
   @media (max-width: 639px) { #como-funciona { --hm: 2; } }
 
-  /* carrossel de avaliações — padrão fade, centralizado */
-  .reviews__head { text-align: center; justify-items: center; margin-left: auto; margin-right: auto; }
-  .reviews__badge { display: flex; align-items: center; justify-content: center; gap: var(--s-2); flex-wrap: wrap; margin-top: var(--s-4); font-weight: 500; }
-  .reviews__label { font-weight: 500; }
-  .reviews__stars { display: inline-flex; gap: 2px; color: #e8b84b; }
-  .reviews__stars svg { width: 18px; height: 18px; }
-  .reviews__count { color: var(--muted); font-weight: 400; }
-  .reviews { max-width: 720px; margin: 0 auto; text-align: center; }
-  .reviews__viewport { display: grid; margin-top: var(--s-8); }
-  .reviews__slide { grid-area: 1 / 1; margin: 0; opacity: 0; transform: translateY(12px);
-                    transition: opacity 500ms var(--ease), transform 500ms var(--ease); pointer-events: none; }
-  .reviews__slide.is-active { opacity: 1; transform: none; pointer-events: auto; }
-  .reviews__slide .stars { display: inline-flex; gap: 2px; color: #e8b84b; margin-bottom: var(--s-5); }
-  .reviews__slide .stars svg { width: 16px; height: 16px; }
-  .reviews__slide blockquote { font: var(--display-weight) var(--t-h3)/1.45 var(--font-display); letter-spacing: var(--display-tracking); max-width: 34ch; margin: 0 auto; }
-  .reviews__slide .person { display: flex; align-items: center; justify-content: center; gap: var(--s-4); margin-top: var(--s-6); }
-  .person__av { display: inline-grid; place-items: center; width: 48px; height: 48px; border-radius: 999px;
-                background: var(--accent); color: var(--accent-ink); font-weight: 500; font-size: var(--t-lead); flex: none; }
-  .person__meta { display: flex; flex-direction: column; gap: 2px; text-align: left; }
-  .person__name { font-weight: 500; }
-  .person__role { font-size: var(--t-small); color: var(--muted); }
-  .reviews__nav { display: flex; justify-content: center; margin-top: var(--s-8); }
-  .reviews__dots { display: flex; gap: var(--s-2); }
-  .reviews__dot { width: 8px; height: 8px; border-radius: 999px; border: 0; padding: 0; cursor: pointer;
-                  background: var(--muted); opacity: 0.45; transition: opacity var(--dur) var(--ease), background var(--dur) var(--ease); }
-  .reviews__dot.is-active { opacity: 1; background: var(--accent); }
+  #depoimentos { --gold: #d9b26a; }
+  .rv { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); row-gap: var(--s-8); align-items: start; }
+  .rv__side { grid-column: 1 / span 5; display: grid; gap: var(--s-7); }
+  .rv__stage { grid-column: 7 / -1; position: relative; }
+  .rv__head h2 { max-width: 12ch; }
+  .rv__badge { display: inline-flex; align-items: center; gap: var(--s-2); flex-wrap: wrap; margin-top: var(--s-5);
+               padding: var(--s-2) var(--s-4); border: 1px solid color-mix(in oklab, var(--gold) 45%, transparent); border-radius: 999px; font-size: var(--t-small); }
+  .rv__badge strong { font-weight: 500; }
+  .rv__badge .muted { color: var(--muted); }
+  .rv__stars { display: inline-flex; gap: 2px; color: var(--gold); }
+  .rv__stars svg { width: 15px; height: 15px; }
 
-  /* FAQ em acordeão animado, um aberto por vez */
+  .rv__index { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+  .rv__item { border-bottom: 1px solid var(--line); }
+  .rv__btn { position: relative; width: 100%; display: grid; grid-template-columns: 40px 1fr auto; align-items: center; gap: var(--s-3);
+             padding: var(--s-4) 0; background: none; border: 0; color: var(--muted); text-align: left; cursor: pointer;
+             font: 400 var(--t-body)/1.3 var(--font-text); transition: color 300ms var(--ease); }
+  .rv__btn:hover, .rv__item.is-active .rv__btn { color: var(--ink); }
+  .rv__num { font-variant-numeric: tabular-nums; font-size: var(--t-small); letter-spacing: 0.04em; }
+  .rv__item.is-active .rv__num { color: var(--gold); }
+  .rv__name { font-weight: 500; }
+  .rv__tag { font-size: var(--t-small); color: var(--muted); opacity: 0; transform: translateX(-6px); transition: opacity 300ms var(--ease), transform 300ms var(--ease); }
+  .rv__item.is-active .rv__tag { opacity: 1; transform: none; }
+  .rv__bar { position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: var(--gold); transform: scaleX(0); transform-origin: left; }
+  .rv__item.is-active .rv__bar { animation: rv-fill var(--rv-dur, 3000ms) linear forwards; }
+  @keyframes rv-fill { to { transform: scaleX(1); } }
+
+  .rv__mark { display: block; font: 400 160px/0.7 Georgia, "Times New Roman", serif; color: var(--gold); height: 72px; margin-bottom: var(--s-5); user-select: none; }
+  .rv__viewport { display: grid; }
+  .rv__slide { grid-area: 1 / 1; margin: 0; visibility: hidden; }
+  .rv__slide.is-active { visibility: visible; }
+  .rv__slide blockquote { margin: 0; font: var(--display-weight) clamp(28px, 2.6vw, 40px)/1.25 var(--font-display); letter-spacing: var(--display-tracking); text-wrap: balance; }
+  .rv__w { display: inline-block; opacity: 0; transform: translateY(0.4em); filter: blur(4px);
+           transition: opacity 600ms var(--ease), transform 600ms var(--ease), filter 600ms var(--ease);
+           transition-delay: calc(var(--i) * 28ms); }
+  .rv__slide.is-active .rv__w { opacity: 1; transform: none; filter: none; }
+  .rv__who { display: flex; align-items: center; gap: var(--s-4); margin-top: var(--s-7);
+             opacity: 0; transform: translateY(8px); transition: opacity 500ms var(--ease) 350ms, transform 500ms var(--ease) 350ms; }
+  .rv__slide.is-active .rv__who { opacity: 1; transform: none; }
+  .rv__line { width: 32px; height: 1px; background: var(--gold); flex: none; }
+  .rv__who-name { font-weight: 500; }
+  .rv__who-role { color: var(--muted); font-size: var(--t-small); }
+
+  @media (max-width: 1023px) {
+    .rv { grid-template-columns: minmax(0, 1fr); row-gap: var(--s-7); }
+    .rv__side, .rv__stage { grid-column: 1 / -1; }
+    .rv__stage { order: 2; }
+    .rv__side { display: contents; }
+    .rv__head { order: 1; }
+    .rv__index { order: 3; }
+    .rv__mark { font-size: 120px; height: 52px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .rv__w, .rv__who { transition: none; filter: none; }
+    .rv__item.is-active .rv__bar { animation: rv-fill var(--rv-dur, 3000ms) linear forwards !important; }
+  }
+
   .faq-acc { border-top: 1px solid var(--line); }
   .faq-item { border-bottom: 1px solid var(--line); }
   .faq-q { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: var(--s-4);
@@ -129,7 +162,6 @@
   .faq-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--s-3); margin-top: var(--s-7); }
   @media (max-width: 639px) { .faq-actions { flex-direction: column; align-items: stretch; } .faq-actions .btn { width: 100%; } }
 
-  /* close centralizado com respiro antes do rodapé */
   .closing__cta.close--cta { justify-content: center; align-items: center; text-align: center; padding-bottom: var(--s-6); }
   .closing__cta.close--cta > * { flex-shrink: 0; }
   .close--cta h1 { font-size: clamp(32px, 3.5vw, 48px); line-height: 1.1; letter-spacing: var(--display-tracking-xl); text-wrap: balance; }
@@ -137,13 +169,11 @@
   .close--cta .btn { height: 56px; padding: 0 40px; font-size: 18px; }
   @media (max-width: 639px) { .close--cta .btn { width: 100%; height: 52px; } }
 
-  /* rodapé: colunas empilham no celular para o e-mail não estourar a coluna */
   @media (max-width: 639px) {
     .closing__links .grid > * { grid-column: 1 / -1; }
     .footer a { overflow-wrap: anywhere; }
   }
 
-  /* crédito do site */
   .footer__legal { border-top: 0; }
   .footer__credit { margin-top: var(--s-4); display: flex; align-items: center; gap: var(--s-2); font-size: var(--t-small); color: var(--muted); }
   .footer__credit a { display: inline-flex; align-items: center; gap: var(--s-2); }
@@ -153,10 +183,6 @@
 </style>
 </head>
 <body>
-<!-- type: service
-     deal: hero split (vídeo em tela cheia), nav nav-split, footer (close centralizado), rhythm dark-band, buttons solid
-     moments: pinned-chapters (#como-funciona), picture-develops (#sobre) -->
-
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
   <symbol id="wa-icon" viewBox="0 0 24 24">
     <path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
@@ -177,7 +203,7 @@
       <div class="nav__item"><a class="nav__link" href="#perguntas">Perguntas</a></div>
     </nav>
     <div class="nav__actions">
-      <a class="btn btn--primary" href="https://wa.me/5511958295442?text=Ol%C3%A1%2C%20Dra.%20Suany!%20Gostaria%20de%20saber%20mais%20sobre%20o%20atendimento%20domiciliar%20e%20verificar%20a%20disponibilidade."><svg class="wa" aria-hidden="true"><use href="#wa-icon"/></svg>Agendar agora</a>
+      <a class="btn btn--primary" href="https://wa.me/5511961975612?text=Oi%20Danilo!%20gostei%20dos%20seus%20sites%2C%20podemos%20conversar%20%3F"><svg class="wa" aria-hidden="true"><use href="#wa-icon"/></svg>Agendar agora</a>
     </div>
     <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menu">
       <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
@@ -199,7 +225,7 @@
         <h1 id="hero-h">Fisioterapia na sua casa</h1>
         <p class="hero__lead">Atendimento fácil, rápido, e prático, agende ainda hoje!</p>
         <div class="btn-row">
-          <a class="btn btn--primary" href="https://wa.me/5511958295442?text=Ol%C3%A1%2C%20Dra.%20Suany!%20Gostaria%20de%20saber%20mais%20sobre%20o%20atendimento%20domiciliar%20e%20verificar%20a%20disponibilidade."><svg class="wa" aria-hidden="true"><use href="#wa-icon"/></svg>Agendar agora</a>
+          <a class="btn btn--primary" href="https://wa.me/5511961975612?text=Oi%20Danilo!%20gostei%20dos%20seus%20sites%2C%20podemos%20conversar%20%3F"><svg class="wa" aria-hidden="true"><use href="#wa-icon"/></svg>Agendar agora</a>
           <a class="btn btn--secondary" href="#atendimentos">Ver os atendimentos</a>
         </div>
       </div>
@@ -207,21 +233,23 @@
   </section>
 
   <section class="section" id="atendimentos" aria-labelledby="atendimentos-h">
-    <div class="wrap grid grid--top">
-      <div class="span-5">
+    <div class="wrap grid grid--top atend">
+      <div class="span-5 atend__head">
         <div class="section-head">
           <h2 id="atendimentos-h">Um cuidado completo para você viver melhor. <span class="muted">Tratamentos com abordagens direcionadas às necessidades de cada paciente.</span></h2>
         </div>
+      </div>
+      <div class="span-6 start-7 atend__list">
         <ul class="rows">
-          <li><span class="rows__name">Fisioterapia integrativa<small>Equilíbrio, bem-estar e qualidade de vida</small></span><span class="rows__value"><a class="link" href="https://wa.me/5511958295442?text=Ol%C3%A1%2C%20Dra.%20Suany!%20Gostaria%20de%20saber%20mais%20sobre%20a%20fisioterapia%20integrativa%20e%20verificar%20a%20disponibilidade%20de%20atendimento.">Consultar</a></span></li>
-          <li><span class="rows__name">Tratamento da dor<small>Dores musculares, articulares e crônicas</small></span><span class="rows__value"><a class="link" href="https://wa.me/5511958295442?text=Ol%C3%A1%2C%20Dra.%20Suany!%20Gostaria%20de%20saber%20mais%20sobre%20o%20tratamento%20da%20dor%20e%20verificar%20a%20disponibilidade%20de%20atendimento.">Consultar</a></span></li>
-          <li><span class="rows__name">Reabilitação pós-operatória<small>Recuperação dos movimentos após cirurgia</small></span><span class="rows__value"><a class="link" href="https://wa.me/5511958295442?text=Ol%C3%A1%2C%20Dra.%20Suany!%20Gostaria%20de%20saber%20mais%20sobre%20a%20reabilita%C3%A7%C3%A3o%20p%C3%B3s-operat%C3%B3ria%20e%20verificar%20a%20disponibilidade%20de%20atendimento.">Consultar</a></span></li>
-          <li><span class="rows__name">Terapia manual<small>Menos tensão muscular, mais mobilidade</small></span><span class="rows__value"><a class="link" href="https://wa.me/5511958295442?text=Ol%C3%A1%2C%20Dra.%20Suany!%20Gostaria%20de%20saber%20mais%20sobre%20a%20terapia%20manual%20e%20verificar%20a%20disponibilidade%20de%20atendimento.">Consultar</a></span></li>
-          <li><span class="rows__name">Atendimento domiciliar<small>Todo o cuidado na sua própria casa</small></span><span class="rows__value"><a class="link" href="https://wa.me/5511958295442?text=Ol%C3%A1%2C%20Dra.%20Suany!%20Gostaria%20de%20saber%20mais%20sobre%20o%20atendimento%20domiciliar%20e%20verificar%20a%20disponibilidade.">Consultar</a></span></li>
+          <li><span class="rows__name">Fisioterapia integrativa<small>Equilíbrio, bem-estar e qualidade de vida</small></span><span class="rows__value"><a class="link" href="https://wa.me/5511961975612?text=Oi%20Danilo!%20gostei%20dos%20seus%20sites%2C%20podemos%20conversar%20%3F">Consultar</a></span></li>
+          <li><span class="rows__name">Tratamento da dor<small>Dores musculares, articulares e crônicas</small></span><span class="rows__value"><a class="link" href="https://wa.me/5511961975612?text=Oi%20Danilo!%20gostei%20dos%20seus%20sites%2C%20podemos%20conversar%20%3F">Consultar</a></span></li>
+          <li><span class="rows__name">Reabilitação pós-operatória<small>Recuperação dos movimentos após cirurgia</small></span><span class="rows__value"><a class="link" href="https://wa.me/5511961975612?text=Oi%20Danilo!%20gostei%20dos%20seus%20sites%2C%20podemos%20conversar%20%3F">Consultar</a></span></li>
+          <li><span class="rows__name">Terapia manual<small>Menos tensão muscular, mais mobilidade</small></span><span class="rows__value"><a class="link" href="https://wa.me/5511961975612?text=Oi%20Danilo!%20gostei%20dos%20seus%20sites%2C%20podemos%20conversar%20%3F">Consultar</a></span></li>
+          <li><span class="rows__name">Atendimento domiciliar<small>Todo o cuidado na sua própria casa</small></span><span class="rows__value"><a class="link" href="https://wa.me/5511961975612?text=Oi%20Danilo!%20gostei%20dos%20seus%20sites%2C%20podemos%20conversar%20%3F">Consultar</a></span></li>
         </ul>
       </div>
-      <div class="frame frame--photo span-6 start-7">
-        <img class="frame__img" src="media/atendimento.jpg" alt="A Dra. Suany Carvalho ao lado de uma paciente sentada na sala de casa" loading="lazy" data-source="client" data-subject="atendimento domiciliar">
+      <div class="frame frame--photo span-6 start-7 atend__photo">
+        <img class="frame__img" src="media/atendimento.jpg" alt="A Dra. Suany Carvalho ao lado de uma paciente sentada na sala de casa" loading="lazy">
       </div>
     </div>
   </section>
@@ -254,41 +282,43 @@
 
   <section class="section ground-inverse" id="depoimentos" aria-labelledby="depo-h">
     <div class="wrap">
-      <div class="section-head reviews__head">
-        <h2 id="depo-h">O que os pacientes escreveram.</h2>
-        <div class="reviews__badge">
-          <span class="reviews__label">Avaliações</span>
-          <span class="reviews__stars" aria-hidden="true">
-            <svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg>
-          </span>
-          <span class="reviews__count">no Google</span>
+      <div class="rv" data-rv>
+        <div class="rv__side">
+          <div class="rv__head">
+            <h2 id="depo-h">O que os pacientes escreveram.</h2>
+            <p class="rv__badge">
+              <strong>Avaliações</strong>
+              <span class="rv__stars" aria-label="cinco estrelas"><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg></span>
+              <span class="muted">no Google</span>
+            </p>
+          </div>
+          <ol class="rv__index" aria-label="Escolher avaliação">
+            <li class="rv__item is-active"><button class="rv__btn" type="button" data-rv-to="0"><span class="rv__num">01</span><span class="rv__name">Vitor Pereira</span><span class="rv__tag">5 estrelas</span><span class="rv__bar" aria-hidden="true"></span></button></li>
+            <li class="rv__item"><button class="rv__btn" type="button" data-rv-to="1"><span class="rv__num">02</span><span class="rv__name">AF Roselli</span><span class="rv__tag">5 estrelas</span><span class="rv__bar" aria-hidden="true"></span></button></li>
+            <li class="rv__item"><button class="rv__btn" type="button" data-rv-to="2"><span class="rv__num">03</span><span class="rv__name">Maria Lourdes</span><span class="rv__tag">5 estrelas</span><span class="rv__bar" aria-hidden="true"></span></button></li>
+            <li class="rv__item"><button class="rv__btn" type="button" data-rv-to="3"><span class="rv__num">04</span><span class="rv__name">Moacir Bueno</span><span class="rv__tag">5 estrelas</span><span class="rv__bar" aria-hidden="true"></span></button></li>
+          </ol>
         </div>
-      </div>
-      <div class="reviews" data-reviews>
-        <div class="reviews__viewport" aria-live="polite">
-          <figure class="reviews__slide is-active">
-            <span class="stars" aria-hidden="true"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span>
-            <blockquote>Está reabilitando meu paciente que cuido e vejo o cuidado dela em cada atendimento para ele melhorar.</blockquote>
-            <figcaption class="person"><span class="person__av" aria-hidden="true">V</span><span class="person__meta"><span class="person__name">Vitor Pereira</span><span class="person__role">Avaliação no Google</span></span></figcaption>
-          </figure>
-          <figure class="reviews__slide">
-            <span class="stars" aria-hidden="true"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span>
-            <blockquote>Super indico essa incrível profissional: atenciosa, dedicada, humana, com entrega dos resultados.</blockquote>
-            <figcaption class="person"><span class="person__av" aria-hidden="true">A</span><span class="person__meta"><span class="person__name">AF Roselli</span><span class="person__role">Avaliação no Google</span></span></figcaption>
-          </figure>
-          <figure class="reviews__slide">
-            <span class="stars" aria-hidden="true"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span>
-            <blockquote>Excelente profissional. Está reabilitando meu marido e ele só melhora. Indico muito.</blockquote>
-            <figcaption class="person"><span class="person__av" aria-hidden="true">M</span><span class="person__meta"><span class="person__name">Maria Lourdes</span><span class="person__role">Avaliação no Google</span></span></figcaption>
-          </figure>
-          <figure class="reviews__slide">
-            <span class="stars" aria-hidden="true"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span>
-            <blockquote>Excelente profissional: dedicada, amorosa e super profissional. Indico de olhos fechados.</blockquote>
-            <figcaption class="person"><span class="person__av" aria-hidden="true">M</span><span class="person__meta"><span class="person__name">Moacir Bueno</span><span class="person__role">Avaliação no Google</span></span></figcaption>
-          </figure>
-        </div>
-        <div class="reviews__nav">
-          <div class="reviews__dots" role="tablist" aria-label="Escolher avaliação"></div>
+        <div class="rv__stage">
+          <span class="rv__mark" aria-hidden="true">&ldquo;</span>
+          <div class="rv__viewport" aria-live="polite">
+            <figure class="rv__slide is-active">
+              <blockquote>Está reabilitando meu paciente que cuido e vejo o cuidado dela em cada atendimento para ele melhorar.</blockquote>
+              <figcaption class="rv__who"><span class="rv__line" aria-hidden="true"></span><span><span class="rv__who-name">Vitor Pereira</span><br><span class="rv__who-role">Avaliação no Google</span></span></figcaption>
+            </figure>
+            <figure class="rv__slide">
+              <blockquote>Super indico essa incrível profissional: atenciosa, dedicada, humana, com entrega dos resultados.</blockquote>
+              <figcaption class="rv__who"><span class="rv__line" aria-hidden="true"></span><span><span class="rv__who-name">AF Roselli</span><br><span class="rv__who-role">Avaliação no Google</span></span></figcaption>
+            </figure>
+            <figure class="rv__slide">
+              <blockquote>Excelente profissional. Está reabilitando meu marido e ele só melhora. Indico muito.</blockquote>
+              <figcaption class="rv__who"><span class="rv__line" aria-hidden="true"></span><span><span class="rv__who-name">Maria Lourdes</span><br><span class="rv__who-role">Avaliação no Google</span></span></figcaption>
+            </figure>
+            <figure class="rv__slide">
+              <blockquote>Excelente profissional: dedicada, amorosa e super profissional. Indico de olhos fechados.</blockquote>
+              <figcaption class="rv__who"><span class="rv__line" aria-hidden="true"></span><span><span class="rv__who-name">Moacir Bueno</span><br><span class="rv__who-role">Avaliação no Google</span></span></figcaption>
+            </figure>
+          </div>
         </div>
       </div>
     </div>
@@ -340,7 +370,7 @@
           </div>
         </div>
         <div class="faq-actions">
-          <a class="btn btn--secondary" href="https://wa.me/5511958295442?text=Ol%C3%A1%2C%20Dra.%20Suany!%20Tenho%20uma%20d%C3%BAvida%20sobre%20o%20atendimento.">Tenho outra dúvida</a>
+          <a class="btn btn--secondary" href="https://wa.me/5511961975612?text=Oi%20Danilo!%20gostei%20dos%20seus%20sites%2C%20podemos%20conversar%20%3F">Tenho outra dúvida</a>
         </div>
       </div>
     </div>
@@ -352,7 +382,7 @@
     <div class="closing__cta close--cta">
       <h1 id="close-h">Sua recuperação começa em casa.</h1>
       <p class="t-lead">Marque uma avaliação com a Dra. Suany Carvalho.</p>
-      <a class="btn btn--primary" href="https://wa.me/5511958295442?text=Ol%C3%A1%2C%20Dra.%20Suany!%20Gostaria%20de%20saber%20mais%20sobre%20o%20atendimento%20domiciliar%20e%20verificar%20a%20disponibilidade."><svg class="wa" aria-hidden="true"><use href="#wa-icon"/></svg>Agendar agora</a>
+      <a class="btn btn--primary" href="https://wa.me/5511961975612?text=Oi%20Danilo!%20gostei%20dos%20seus%20sites%2C%20podemos%20conversar%20%3F"><svg class="wa" aria-hidden="true"><use href="#wa-icon"/></svg>Agendar agora</a>
     </div>
     <div class="closing__links">
       <div class="grid">
@@ -361,7 +391,7 @@
           <p class="footer__lede">Fisioterapia domiciliar em Osasco e na zona oeste de São Paulo.</p>
         </div>
         <div class="span-3 footer__col"><h3>Contato</h3><ul>
-          <li><a href="https://wa.me/5511958295442">WhatsApp</a></li>
+          <li><a href="https://wa.me/5511961975612?text=Oi%20Danilo!%20gostei%20dos%20seus%20sites%2C%20podemos%20conversar%20%3F">WhatsApp</a></li>
           <li><a href="mailto:dra.suanycarvalho@gmail.com">dra.suanycarvalho@gmail.com</a></li>
           <li><a href="https://www.instagram.com/dra.suanycarvalho">Instagram</a></li>
           <li><a href="https://www.facebook.com/p/Suany-Carvalho-61576433092518/">Facebook</a></li>
@@ -390,7 +420,7 @@
 </footer>
 
 <nav class="actionbar" aria-label="Ações rápidas">
-  <a class="btn btn--primary" href="https://wa.me/5511958295442?text=Ol%C3%A1%2C%20Dra.%20Suany!%20Gostaria%20de%20agendar%20uma%20consulta."><svg class="wa" aria-hidden="true"><use href="#wa-icon"/></svg>Agendar minha consulta</a>
+  <a class="btn btn--primary" href="https://wa.me/5511961975612?text=Oi%20Danilo!%20gostei%20dos%20seus%20sites%2C%20podemos%20conversar%20%3F"><svg class="wa" aria-hidden="true"><use href="#wa-icon"/></svg>Agendar minha consulta</a>
 </nav>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -400,41 +430,47 @@
 <script type="module" src="assets/layout/layout.js"></script>
 <script>
 (function () {
-  /* carrossel de avaliações: fade, autoplay, pontos */
-  var root = document.querySelector('[data-reviews]');
+  var root = document.querySelector('[data-rv]');
   if (root) {
-    var slides = Array.prototype.slice.call(root.querySelectorAll('.reviews__slide'));
-    var dotsWrap = root.querySelector('.reviews__dots');
-    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var DUR = 3000;
+    root.style.setProperty('--rv-dur', DUR + 'ms');
+    var all = function (sel) { return Array.prototype.slice.call(root.querySelectorAll(sel)); };
+    var slides = all('.rv__slide');
     var i = 0, timer = null;
 
-    slides.forEach(function (_, k) {
-      var d = document.createElement('button');
-      d.type = 'button';
-      d.className = 'reviews__dot' + (k === 0 ? ' is-active' : '');
-      d.setAttribute('aria-label', 'Avaliação ' + (k + 1));
-      d.addEventListener('click', function () { show(k); restart(); });
-      dotsWrap.appendChild(d);
+    slides.forEach(function (s) {
+      var q = s.querySelector('blockquote');
+      var words = q.textContent.trim().split(/\s+/);
+      q.setAttribute('aria-label', q.textContent.trim());
+      q.innerHTML = words.map(function (w, k) {
+        return '<span class="rv__w" aria-hidden="true" style="--i:' + k + '">' + w + '</span>';
+      }).join(' ');
     });
-    var dots = Array.prototype.slice.call(dotsWrap.children);
 
     function show(n) {
-      slides.forEach(function (s, k) { s.classList.toggle('is-active', k === n); });
-      dots.forEach(function (d, k) { d.classList.toggle('is-active', k === n); });
+      all('.rv__slide').forEach(function (s, k) { s.classList.toggle('is-active', k === n); });
+      all('.rv__item').forEach(function (it, k) {
+        it.classList.remove('is-active');
+        if (k === n) { void it.offsetWidth; it.classList.add('is-active'); }
+        var b = it.querySelector('.rv__btn');
+        if (b) b.setAttribute('aria-current', k === n ? 'true' : 'false');
+      });
       i = n;
     }
-    function next() { show((i + 1) % slides.length); }
     function restart() {
       clearInterval(timer);
-      if (!reduced && slides.length > 1) timer = setInterval(next, 3000);
+      timer = setInterval(function () { show((i + 1) % slides.length); }, DUR);
     }
+    root.addEventListener('click', function (e) {
+      var b = e.target.closest('.rv__btn');
+      if (!b) return;
+      show(Number(b.getAttribute('data-rv-to')));
+      restart();
+    });
     show(0);
     restart();
-    root.addEventListener('mouseenter', function () { clearInterval(timer); });
-    root.addEventListener('mouseleave', restart);
   }
 
-  /* FAQ: um aberto por vez, com animação */
   var group = document.querySelector('[data-acc-group]');
   if (group) {
     var items = Array.prototype.slice.call(group.querySelectorAll('[data-acc]'));
@@ -459,57 +495,50 @@
       });
     });
   }
-})();
-</script>
-<script>
-(function () {
+
   var nav = document.querySelector('.nav--transparent');
   if (nav) {
     var onScroll = function () { nav.classList.toggle('is-scrolled', window.scrollY > 40); };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
   }
-})();
-</script>
-<script>
-(function () {
+
   var bar = document.querySelector('body > nav.actionbar');
   var hero = document.querySelector('main > .hero');
   var close = document.querySelector('.closing__cta.close--cta');
-  if (!bar || !hero || !close) return;
-  var setBar = function (shown) {
-    var v = shown ? 'shown' : 'hidden';
-    if (bar.dataset.bar === v) return;
-    bar.dataset.bar = v;
-    bar.inert = !shown;
-  };
-  var update = function () {
-    var pastHero = window.scrollY > hero.offsetHeight - 60;
-    var closeVisible = close.getBoundingClientRect().top < window.innerHeight * 0.7;
-    setBar(pastHero && !closeVisible);
-  };
-  window.addEventListener('scroll', update, { passive: true });
-  window.addEventListener('resize', update);
-  update();
-})();
-</script>
-<script>
-(function () {
-  if (!window.gsap || !window.ScrollToPlugin) return;
-  gsap.registerPlugin(ScrollToPlugin);
-  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
-    a.addEventListener('click', function (e) {
-      var hash = a.getAttribute('href');
-      if (!hash || hash.length < 2) return;
-      var target = document.querySelector(hash);
-      if (!target) return;
-      e.preventDefault();
-      if (reduced) { target.scrollIntoView({ behavior: 'auto', block: 'start' }); return; }
-      gsap.to(window, { duration: 0.9, scrollTo: hash, ease: 'power2.inOut' });
-      history.pushState(null, '', hash);
+  if (bar && hero && close) {
+    var setBar = function (shown) {
+      var v = shown ? 'shown' : 'hidden';
+      if (bar.dataset.bar === v) return;
+      bar.dataset.bar = v;
+      bar.inert = !shown;
+    };
+    var update = function () {
+      var pastHero = window.scrollY > hero.offsetHeight - 60;
+      var closeVisible = close.getBoundingClientRect().top < window.innerHeight * 0.7;
+      setBar(pastHero && !closeVisible);
+    };
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  }
+
+  if (window.gsap && window.ScrollToPlugin) {
+    gsap.registerPlugin(ScrollToPlugin);
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        var hash = a.getAttribute('href');
+        if (!hash || hash.length < 2) return;
+        var target = document.querySelector(hash);
+        if (!target) return;
+        e.preventDefault();
+        if (reduced) { target.scrollIntoView({ behavior: 'auto', block: 'start' }); return; }
+        gsap.to(window, { duration: 0.9, scrollTo: hash, ease: 'power2.inOut' });
+        history.pushState(null, '', hash);
+      });
     });
-  });
+  }
 })();
 </script>
 </body>

@@ -1,5 +1,5 @@
-_material
-.taste-skill
-shots
-.playwright-mcp
+_material/
+shots/
+.vscode/
 videohero.mp4
+.*/
